@@ -1,1 +1,1 @@
-# SUP-PORT.EN
+# Student project
