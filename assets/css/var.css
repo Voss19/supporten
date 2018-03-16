@@ -1,0 +1,6 @@
+@import 'fonts.css';
+
+:root {
+	--logo-font: 'X4';
+	--main-font: IBM Plex Sans;
+}

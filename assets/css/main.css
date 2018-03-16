@@ -1,0 +1,5 @@
+@import 'var.css';
+
+* {
+	font-family: var(--main-font);
+}
