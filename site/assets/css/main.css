@@ -1,5 +1,11 @@
 @import 'var.css';
 
 * {
+	font-family: var(--main-font);
+}
+
+.logo {
 	font-family: var(--logo-font);
+	font-size: 25px;
+	margin-top: 1px;
 }

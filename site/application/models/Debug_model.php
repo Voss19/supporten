@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Loader_model extends CI_Model {
+class Debug_model extends CI_Model {
 
 	public function post($exit = null)
 	{
