@@ -42,9 +42,11 @@ class Bruger extends CI_Controller {
 		}
 
 		if ($this->input->post('opret')) {
+			$this->form_validation->set_rules('fname', 'Fornavn', 'required');
+			$this->form_validation->set_rules('lname', 'Efternavn', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.u_email]');
-			$this->form_validation->set_rules('password', 'Password', 'required');
-			$this->form_validation->set_rules('rpassword', 'Repeat Password', 'required|matches[password]');
+			$this->form_validation->set_rules('password', 'Adgangskode', 'required');
+			$this->form_validation->set_rules('rpassword', 'Gentag adgangskode', 'required|matches[password]');
 
 			if ($this->form_validation->run()) {
 				$formemail = $this->input->post('email');
@@ -77,6 +79,8 @@ class Bruger extends CI_Controller {
 				$formdata = array(
 							'u_email'				=>		$formemail,
 							'u_password'			=>		password_hash($formpassword, PASSWORD_DEFAULT),
+							'u_first_name'			=>		$this->input->post('fname'),
+							'u_last_name'			=>		$this->input->post('lname'),
 							'token'					=>		$token
 						);
 				$this->db->insert('users', $formdata);
@@ -85,4 +89,57 @@ class Bruger extends CI_Controller {
 
 		$this->loader->view('bruger/login');
 	}
+
+	public function aktiver($token = null)
+	{
+		$this->sess->is_logged_in();
+
+		if (!$token || $this->loader->user->u_active !== 1) {
+			redirect();
+		}
+
+		if ($this->loader->user->token == $token) {
+			$this->db->where('token', $token)
+				->update('users',
+					array(
+						'u_active'		=>		1
+					));
+			redirect('bruger/login');
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
