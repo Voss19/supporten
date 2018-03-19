@@ -5,6 +5,6 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->loader->load('forside');
+		$this->loader->view('forside');
 	}
 }

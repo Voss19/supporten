@@ -5,13 +5,16 @@ class Debug_model extends CI_Model {
 
 	public function post($exit = null)
 	{
-		echo "<pre>";
-			print_r($this->input->post());
-		echo "</pre>";
+		if ($this->input->post()) {
+			echo "<pre>";
+				print_r($this->input->post());
+			echo "</pre>";
 
-		if ($exit) {
-			exit;
+			if ($exit) {
+				exit;
+			}
 		}
+		
 	}
 
 	public function session($exit = null)

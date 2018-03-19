@@ -7,6 +7,6 @@ class Errors extends CI_Controller {
 	{
 		$this->output->set_status_header('404');
 		$data['title'] = "404 Side ikke fundet";
-		$this->loader->load(null, $data);
+		$this->loader->view(null, $data);
 	}
 }

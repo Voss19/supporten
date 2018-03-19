@@ -5,7 +5,7 @@ class Sag extends CI_Controller {
 
 	public function opret()
 	{
-		$this->sm->redirect();
-		$this->loader->load('sag/opret');
+		$this->sess->to_login();
+		$this->loader->view('sag/opret');
 	}
 }

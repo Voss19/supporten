@@ -4,6 +4,10 @@
 	font-family: var(--main-font);
 }
 
+.x4 {
+	font-family: var(--logo-font);
+}
+
 .logo {
 	font-family: var(--logo-font);
 	font-size: 25px;
