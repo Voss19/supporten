@@ -6,8 +6,8 @@ class Bruger extends CI_Controller {
 	public function index()
 	{
 		$this->sess->to_login();
-		$data['img'] = 'test';
-		$this->loader->view('bruger/index', $data);
+
+		$this->loader->view('bruger/index');
 	}
 	
 	public function login()
@@ -53,18 +53,7 @@ class Bruger extends CI_Controller {
 				$formpassword = $this->input->post('password');
 				$token = md5($formemail);
 
-				// The mail sending protocol.
-				$config['protocol'] = 'smtp';
-				// SMTP Server Address for Gmail.
-				$config['smtp_host'] = "ssl://smtp.googlemail.com";
-				// SMTP Port - the port that you is required
-				$config['smtp_port'] = 465;
-				// SMTP Username like. (abc@gmail.com)
-				$config['smtp_user'] = "snurresturlosson@gmail.com";
-				// SMTP Password like (abc***##)
-				$config['smtp_pass'] = "PinkBox01";
-				// Load email library and passing configured values to email library
-				$this->load->library('email', $config);
+				
 
 				// Sender email address
 				$this->email->set_newline("\r\n");
@@ -75,6 +64,8 @@ class Bruger extends CI_Controller {
 				$this->email->subject("Hey DO!");
 				// Message in email
 				$this->email->message(base_url('bruger/aktiver/').$token);
+
+				$this->email->send();
 
 				$formdata = array(
 							'u_email'				=>		$formemail,
@@ -94,18 +85,38 @@ class Bruger extends CI_Controller {
 	{
 		$this->sess->is_logged_in();
 
-		if (!$token || $this->loader->user->u_active !== 1) {
+		if (!$token) {
 			redirect();
 		}
 
-		if ($this->loader->user->token == $token) {
-			$this->db->where('token', $token)
-				->update('users',
-					array(
-						'u_active'		=>		1
-					));
-			redirect('bruger/login');
+		$sqlQuery = $this->db->where('token', $token)->get('users');
+
+		if ($sqlQuery->num_rows()) {
+			if ($sqlQuery->row()->u_active !== '1') {
+				$this->db->where('token', $token)
+					->update('users',
+						array(
+							'u_active'		=>		1
+						));
+				redirect('bruger/login');
+			} else {
+				$this->loader->view();
+			}
+		} else {
+			$this->loader->view();
 		}
+	}
+
+	public function opdater()
+	{
+		$this->sess->to_login();
+
+		if ($this->input->post()) {
+			echo "Jeg ville ikke lave mere bruger stuff";
+			exit;
+		}
+
+		$this->loader->view('bruger/opdater');
 	}
 }
 

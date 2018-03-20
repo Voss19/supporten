@@ -10,9 +10,9 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<?php if (isset($user)) { ?>
+					<?php if ($this->loader->user) { ?>
 					<a href="<?php echo base_url('bruger'); ?>"><span class="glyphicon glyphicon-user"></span> 
-					<?php echo $user->u_first_name; ?>
+					<?php echo $this->loader->user->u_first_name; ?>
 				</a>
 					<?php } else { ?>
 					<a href="<?php echo base_url('bruger/login'); ?>"><span class="glyphicon glyphicon-user"></span> 
