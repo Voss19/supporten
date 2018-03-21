@@ -11,11 +11,13 @@
 					</tr>
 				</thead>
 				<tbody>
+					<?php foreach ($top_users as $key => $value) { ?>
 					<tr>
-						<td>1</td>
-						<td><a href="">Oliver</a></td>
-						<td>37</td>
+						<td><?php echo $key + 1; ?></td>
+						<td><a style="color: <?php echo $value['u_color']; ?>;" href="<?php echo base_url('bruger/profil/'.$value['u_id']); ?>"><?php echo $value['u_first_name']; ?></a></td>
+						<td><?php echo $value['points']; ?></td>
 					</tr>
+					<?php } ?>
 				</tbody>
 			</table>
 		</div>
@@ -54,10 +56,12 @@
 					</tr>
 				</thead>
 				<tbody>
+					<?php foreach ($latest_cases as $key => $value) { ?>
 					<tr>
-						<td>1</td>
-						<td><a href="">Min computer vil ikke starte</a></td>
+						<td><?php echo $key + 1; ?></td>
+						<td><a href="<?php echo base_url('sag/'.$value['c_id']); ?>"><?php echo $value['c_title']; ?></a></td>
 					</tr>
+					<?php } ?>
 				</tbody>
 			</table>
 		</div>

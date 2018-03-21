@@ -21,11 +21,11 @@
 					<?php } ?>
 				</li>
 				<li>
-					<form class="navbar-form navbar-left" action="/action_page.php">
+					<form class="navbar-form navbar-left" method="post">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="S&oslash;g">
+							<input type="text" name="sb" class="form-control" placeholder="S&oslash;g">
 							<div class="input-group-btn">
-								<button class="btn btn-default" type="submit">
+								<button class="btn btn-default" value="lel" type="submit" name="search">
 									<i class="glyphicon glyphicon-search"></i>
 								</button>
 							</div>

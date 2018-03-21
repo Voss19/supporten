@@ -1,6 +1,5 @@
 <div class="panel panel-default">
 	<div class="panel-body">
-		<div id="filetest" style="border: 1px solid #000; width: 200px; height: 200px;"></div>
 		<div class="col-sm-8 col-sm-offset-2">
 			<form class="form-horizontal" class="file" method="post" enctype="multipart/form-data">
 				<div class="form-group">

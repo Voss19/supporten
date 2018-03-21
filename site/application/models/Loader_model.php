@@ -31,10 +31,31 @@ class Loader_model extends CI_Model {
 		}
 	}
 
-	public function view($content = 'template/page_not_found', $data = array())
+	public function view($content = 'template/page_not_found', $data = array(), $exit = null)
 	{
 		if (!$content) {
 			$content = 'template/page_not_found';
+		}
+
+		if ($this->input->post('search')) {
+			$sb = explode(" ", $this->input->post('sb'));
+			$i = 0;
+			foreach ($sb as $key => $value) {
+				if ($i == 0) {
+					$this->db->like('c_title', $sb[$key]);
+					$this->db->or_like('c_content', $sb[$key]);
+					$i = 1;
+				} else {
+					$this->db->or_like('c_title', $sb[$key]);
+					$this->db->or_like('c_content', $sb[$key]);
+				}
+			}
+			$sqlQuery = $this->db->get('cases');
+
+			if ($sqlQuery->num_rows()) {
+				$content = 'template/search';
+				$data['search'] = $sqlQuery->result_array();
+			}
 		}
 
 		$data['css'][] = 'main';

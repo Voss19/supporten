@@ -12,6 +12,6 @@
 		<input type="file" name="img">
 	</div>
 	<div class="form-group">
-		<button class="btn btn-success" type="submit">Opret</button>
+		<button class="btn btn-success" value="easter egg" name="opret" type="submit">Opret</button>
 	</div>
 </form>

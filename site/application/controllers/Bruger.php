@@ -118,6 +118,19 @@ class Bruger extends CI_Controller {
 
 		$this->loader->view('bruger/opdater');
 	}
+
+	public function profil($id = null)
+	{
+		if (!$id) {
+			redirect();
+		}
+
+		$data['user'] = $this->db->where('u_id', $id)->get('users')->row();
+
+		$data['latest_cases'] = $this->db->where('c_owner', $id)->order_by('c_id', 'desc')->limit(5)->get('cases')->result_array();
+
+		$this->loader->view('bruger/profil', $data);
+	}
 }
 
 

@@ -7,8 +7,8 @@
 			
 		</div>
 		<div class="col-sm-8">
-			<h3><?php echo $this->loader->user->u_first_name; ?></h3>
-			<h4><?php echo $this->loader->user->u_last_name; ?></h4>
+			<h3 style="margin-top: 0; color: <?php echo $this->loader->user->u_color; ?>;"><?php echo $this->loader->user->u_first_name; ?></h3>
+			<h4 style="color: <?php echo $this->loader->user->u_color; ?>;"><?php echo $this->loader->user->u_last_name; ?></h4>
 			<p><?php echo $this->loader->user->u_email; ?></p>
 			<p>Antal point: <?php echo $this->loader->user->points; ?></p>
 			<a class="btn btn-primary" href="<?php echo base_url('bruger/opdater') ?>">Opdater</a>

@@ -54,3 +54,4 @@ $route['404_override'] = 'errors/err_404';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['bruger/aktiver/(:any)'] = 'bruger/aktiver/$1';
+$route['sag/(:num)'] = 'sag/index/$1';
