@@ -36,16 +36,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php $j = 0; foreach ($top_cases as $key => $value) { ?>
-					<?php if ($j < 5) { ?>
+					<?php foreach ($top_cases as $key => $value) { ?>
 					<tr>
 						<td><?php echo $key + 1; ?></td>
 						<td><a href="<?php echo base_url('sag/'.$value['case']['c_id']); ?>"><?php echo $value['case']['c_title']; ?></a></td>
 						<td><?php echo $value['votes']; ?></td>
 					</tr>
-					<?php } $j++; 
-
-					} ?>
+					<?php } ?>
 				</tbody>
 			</table>
 		</div>

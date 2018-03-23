@@ -24,7 +24,7 @@ class Welcome extends CI_Controller {
 			$i++;
 		}
 		
-		$data['top_cases'] = array_reverse($this->arr->subval_sort($data['top_cases'],'votes'));
+		$data['top_cases'] = array_slice(array_reverse($this->arr->subval_sort($data['top_cases'],'votes')), 0, 5);
 
 		$this->loader->view('index', $data);
 	}
