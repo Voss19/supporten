@@ -15,4 +15,12 @@
 			<?php } ?>
 	</div>
 </div>
+<?php } else { ?>
+
+<div class="panel panel-default">
+	<div class="panel-body">
+		<p>Der er ikke en sag som matcher denne beskrivelse</p>
+	</div>
+</div>
+
 <?php } ?>

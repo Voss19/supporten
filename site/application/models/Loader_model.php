@@ -38,6 +38,7 @@ class Loader_model extends CI_Model {
 		}
 
 		if ($this->input->post('search')) {
+			$content = 'template/search';
 			$sb = explode(" ", $this->input->post('sb'));
 			$i = 0;
 			foreach ($sb as $key => $value) {
@@ -53,7 +54,6 @@ class Loader_model extends CI_Model {
 			$sqlQuery = $this->db->get('cases');
 
 			if ($sqlQuery->num_rows()) {
-				$content = 'template/search';
 				$data['search'] = $sqlQuery->result_array();
 			}
 		}

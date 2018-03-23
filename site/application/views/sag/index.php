@@ -10,16 +10,82 @@
 			</div>
 		</div>
 		<div class="col-sm-10">
-			<h3>
-				<?php echo $case->c_title; ?>
-			</h3>
-			<hr>
-			<p>
-				<?php echo $case->c_content; ?>
-			</p>
-			<?php if ($case->c_image) { ?>
-			<img style="max-height: 300px;" src="<?php echo base_url('assets/images/cases/'.$case->c_image); ?>">
-			<?php } ?>
+			<div class="row">
+				<div class="col-sm-9">
+					<h3>
+						<?php 
+
+						echo $case->c_title;
+
+						if (isset($is_solved)) {
+							echo "<p style='float: right; font-size: 20px; color: #00cc00 !important;'>Løst</p>";
+						}
+
+						?>
+					</h3>
+					<?php if (isset($is_owner)) {
+						if (!isset($is_solved)) {
+							
+							echo "
+
+								<form method='post'>
+									<button name='solved' type='submit' value='le' class='btn btn-default btn-success'>L&oslash;st</button>
+								</form>
+
+							";} else {
+									echo "
+
+										<form method='post'>
+											<button name='nsolved' type='submit' value='le' class='btn btn-default btn-danger'>L&oslash;st</button>
+										</form>
+
+							";
+							}
+						} ?>
+				</div>
+				<div class="col-sm-3">
+					<div class="col-sm-9">
+						<p style="padding-top: 20px; float: right;">Antal votes:
+							<?php echo $votes; ?>
+						</p>
+					</div>
+					<?php 
+
+					if ($this->loader->user) {
+						if (!isset($voted)) {
+							?>
+					<div class="col-sm-3">
+						<form method="post" style="padding-top: 12px;">
+							<button value="lel" name="vote" type="submit" class="btn btn-default">&#9650;</button>
+						</form>
+					</div>
+					<?php
+						} else {
+							?>
+						<div class="col-sm-3">
+							<form method="post" style="padding-top: 12px;">
+								<button value="lel" name="rvote" type="submit" class="btn btn-default btn-primary">&#9650;</button>
+							</form>
+						</div>
+						<?php
+						}
+					}
+
+
+				 ?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<hr>
+					<p>
+						<?php echo $case->c_content; ?>
+					</p>
+					<?php if ($case->c_image) { ?>
+					<img style="max-height: 300px;" src="<?php echo base_url('assets/images/cases/'.$case->c_image); ?>">
+					<?php } ?>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -74,7 +140,6 @@
 </div>
 <?php } ?>
 <?php } else { ?>
-
 <div class="panel panel-default">
 	<div class="panel-body">
 		<p>
@@ -82,5 +147,4 @@
 		</p>
 	</div>
 </div>
-
 <?php } ?>
